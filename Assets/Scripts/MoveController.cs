@@ -6,20 +6,25 @@ public class MoveController : MonoBehaviour
 {
     public float speed = 20f;
     Rigidbody _rb;
+    public IUnityService service;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        if (service == null)
+        {
+            service = this.gameObject.AddComponent<UnityMoveService>();
+        }
     }
 
     void Update()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
-        var deltaTime = Time.deltaTime;
+        //var h = Input.GetAxis("Horizontal");
+        //var v = Input.GetAxis("Vertical");
+        //var deltaTime = Time.deltaTime;
 
-        float x = SpeedByFrame(h, deltaTime);
-        float z = SpeedByFrame(v, deltaTime);
+        float x = SpeedByFrame(service.GetInputAxis("Horizontal"), service.GetDeltaTime());
+        float z = SpeedByFrame(service.GetInputAxis("Vertical"), service.GetDeltaTime());
 
         _rb.MovePosition(CalculatePosition(transform.position, x, z));
     }
