@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10f;
     Rigidbody _rb;
 
     private void Start()
@@ -16,10 +16,13 @@ public class MoveController : MonoBehaviour
     {
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
+        var deltaTime = Time.deltaTime;
 
-        float x = h * speed * Time.deltaTime;
-        float z = v * speed * Time.deltaTime;
+        float x = SpeedByFrame(h, deltaTime);
+        float z = SpeedByFrame(v, deltaTime);
 
         _rb.MovePosition(transform.position + new Vector3(x, 0, z));
     }
+
+    public float SpeedByFrame(float axis, float deltaTime) => axis * speed * deltaTime;
 }
