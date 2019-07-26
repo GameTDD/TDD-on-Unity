@@ -13,7 +13,7 @@ namespace Tests
         [OneTimeSetUp]
         public void TestSetUp()
         {
-            moveController = new MoveController();
+            moveController = new GameObject().AddComponent<MoveController>();
         }
 
         [Test]
