@@ -5,11 +5,13 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     public float speed = 20f;
+    Movement movement;
     Rigidbody _rb;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        movement = new Movement();
     }
 
     void Update()
@@ -18,13 +20,9 @@ public class MoveController : MonoBehaviour
         var v = Input.GetAxis("Vertical");
         var deltaTime = Time.deltaTime;
 
-        float x = SpeedByFrame(h, deltaTime);
-        float z = SpeedByFrame(v, deltaTime);
+        float x = movement.SpeedByFrame(h, speed, deltaTime);
+        float z = movement.SpeedByFrame(v, speed, deltaTime);
 
-        _rb.MovePosition(CalculatePosition(transform.position, x, z));
+        _rb.MovePosition(movement.CalculatePosition(transform.position, x, z));
     }
-
-    public float SpeedByFrame(float axis, float deltaTime) => axis * speed * deltaTime;
-
-    public Vector3 CalculatePosition(Vector3 position, float x, float z) => position + new Vector3(x, 0, z);
 }
