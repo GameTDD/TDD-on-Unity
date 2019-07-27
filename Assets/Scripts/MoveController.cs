@@ -19,10 +19,6 @@ public class MoveController : MonoBehaviour
 
     void Update()
     {
-        //var h = Input.GetAxis("Horizontal");
-        //var v = Input.GetAxis("Vertical");
-        //var deltaTime = Time.deltaTime;
-
         float x = SpeedByFrame(service.GetInputAxis("Horizontal"), service.GetDeltaTime());
         float z = SpeedByFrame(service.GetInputAxis("Vertical"), service.GetDeltaTime());
 

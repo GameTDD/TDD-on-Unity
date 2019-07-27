@@ -73,5 +73,17 @@ namespace Tests
 
             Assert.AreEqual(new Vector3(6f, 4f, 10f), newPosition);
         }
-    }
+
+		[Test]
+        public void TestNewPositionHasChangedNegativelyOnZ()
+		{
+			float x = 0f;
+			float z = -3f;
+			Vector3 position = new Vector3(3f, 4f, 5f);
+
+			Vector3 newPosition = moveController.CalculatePosition(position, x, z);
+
+			Assert.AreEqual(new Vector3(3f, 4f, 2f), newPosition);
+		}
+	}
 }
