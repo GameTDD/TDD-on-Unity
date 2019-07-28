@@ -7,23 +7,26 @@ public class EnemySpawner : MonoBehaviour
     public float radius;
     public GameObject enemy;
     public GameObject player;
-    float time;
+    float _time;
+    float _step = 1f;
 
     System.Random random;
 
     void Start()
     {
         random = new System.Random();
-        time = 0;
+        _time = 0;
     }
 
     void Update()
     {
-        time += Time.deltaTime;
-        if (time >= spawnTime)
+        _time += Time.deltaTime;
+        if (_time >= spawnTime)
         {
             Spawn();
-            time = 0f;
+            if (radius > _step + 1.1)
+            { radius -= _step; }
+            _time = 0f;
         }
     }
 
