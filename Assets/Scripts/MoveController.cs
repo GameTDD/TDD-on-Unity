@@ -7,6 +7,7 @@ public class MoveController : MonoBehaviour
     public float speed = 20f;
     Rigidbody _rb;
     public IUnityService service;
+    public LifeGauge lifeGauge;
 
     private void Start()
     {
@@ -19,10 +20,13 @@ public class MoveController : MonoBehaviour
 
     void Update()
     {
-        float x = SpeedByFrame(service.GetInputAxis("Horizontal"), service.GetDeltaTime());
-        float z = SpeedByFrame(service.GetInputAxis("Vertical"), service.GetDeltaTime());
+        if (lifeGauge.IsAlive())
+        {
+            float x = SpeedByFrame(service.GetInputAxis("Horizontal"), service.GetDeltaTime());
+            float z = SpeedByFrame(service.GetInputAxis("Vertical"), service.GetDeltaTime());
 
-        _rb.MovePosition(CalculatePosition(transform.position, x, z));
+            _rb.MovePosition(CalculatePosition(transform.position, x, z));
+        }
     }
 
     public float SpeedByFrame(float axis, float deltaTime) => axis * speed * deltaTime;

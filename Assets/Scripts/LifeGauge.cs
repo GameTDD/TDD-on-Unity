@@ -13,7 +13,7 @@ public class LifeGauge : MonoBehaviour
     void Start() {
         lifebar.value = life;
         loose.enabled = false;
-        loose.text = "You loose";
+        loose.text = "You lose";
     }
 
     void Update() {
@@ -38,4 +38,9 @@ public class LifeGauge : MonoBehaviour
     }
 
     public void OnCollisionEnter(Collision collision) => Damaged();
+
+    public bool IsAlive()
+    {
+        return life > 0;
+    }
 }

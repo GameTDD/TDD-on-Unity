@@ -66,5 +66,25 @@ namespace Tests
 
             Assert.That(cube.life == 0);
         }
+
+        [Test]
+        public void TestIsAliveReturnsTrueWhenAlive()
+        {
+            cube.life = 100;
+
+            Assert.IsTrue(cube.IsAlive());
+
+            cube.life = 1;
+
+            Assert.IsTrue(cube.IsAlive());
+        }
+
+        [Test]
+        public void TestIsAliveReturnsFalseWhenDead()
+        {
+            cube.life = 0;
+
+            Assert.IsFalse(cube.IsAlive());
+        }
     }
 }

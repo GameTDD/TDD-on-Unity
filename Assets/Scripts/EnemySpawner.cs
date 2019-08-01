@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnTime;
     public float radius;
     public GameObject enemy;
-    public GameObject player;
+    public LifeGauge lifeGauge;
     float _time;
     float _step = 1f;
 
@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         _time += Time.deltaTime;
-        if (_time >= spawnTime)
+        if (_time >= spawnTime && lifeGauge.IsAlive())
         {
             Spawn();
             if (radius > _step + 1.1)
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     public void Spawn()
     {
         var angle = Mathf.PI * random.Next(0, 8) / random.Next(1, 10);
-        Vector3 spawnPosition = GetPosition(player.transform.position, radius, angle);
+        Vector3 spawnPosition = GetPosition(lifeGauge.transform.position, radius, angle);
         Instantiate(enemy, spawnPosition, Quaternion.identity);
     }
 }

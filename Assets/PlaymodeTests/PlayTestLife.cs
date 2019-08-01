@@ -64,7 +64,7 @@ namespace Tests
             cube.lifebar.value = 0;
             yield return new WaitForFixedUpdate();
 
-            Assert.AreEqual("You loose", cube.loose.text);
+            Assert.AreEqual("You lose", cube.loose.text);
         }
     }
 }
