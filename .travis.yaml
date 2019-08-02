@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode11
+rvm:
+- 2.1.2
+before_install:
+- chmod a+x ./Scripts/install.sh
+- chmod a+x ./Scripts/build.sh
+- chmod a+x ./Scripts/unit.sh
+- chmod a+x ./Scripts/integration.sh
+install:
+- ./Scripts/install.sh
+script:
+- ./Scripts/unit.sh
+- ./Scripts/integration.sh
+- ./Scripts/build.sh
