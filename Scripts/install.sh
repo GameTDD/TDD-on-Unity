@@ -17,9 +17,7 @@ install() {
   download "$package"
 
   echo "Installing "`basename "$package"`
-  echo $(pwd)
-  echo $(ls)
-  sudo installer -dumplog -package `basename "$package"` -target /
+  sudo installer -dumplog -package `$(pwd)/basename "$package"` -target /
 }
 
 install "MacEditorInstaller/Unity-$VERSION.pkg"
