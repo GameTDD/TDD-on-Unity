@@ -9,7 +9,10 @@ before_install:
 - chmod a+x ./Scripts/integration.sh
 install:
 - ./Scripts/install.sh
-script:
-- ./Scripts/unit.sh
-- ./Scripts/integration.sh
-- ./Scripts/build.sh
+jobs:
+  include:
+    - stage: unit
+      script: ./Scripts/unit.sh
+    - stage: integration
+      script: ./Scripts/integration.sh
+
