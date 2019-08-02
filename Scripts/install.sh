@@ -16,7 +16,7 @@ install() {
   package=$1
   download "$package"
 
-  echo "Installing "`basename "$package"`
+  echo "Installing "`"$(pwd)"/basename "$package"`
   sudo installer -dumplog -verbose -pkg `basename "$package"` -target /
 }
 
