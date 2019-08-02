@@ -1,8 +1,7 @@
 #! /bin/sh
 
 BASE_URL=http://netstorage.unity3d.com/unity
-HASH=88d00a7498cd
-VERSION=2018.3.12f1
+HASH=8afd630d1f5b
 
 download() {
   file=$1
@@ -22,4 +21,3 @@ install() {
 }
 
 install "MacEditorInstaller/Unity.pkg"
-# install "MacEditorTargetInstaller/UnitySetup-Mac-Support-for-Editor.pkg"
