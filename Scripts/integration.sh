@@ -5,6 +5,7 @@ unity='/Applications/Unity/Unity.app/Contents/MacOS/Unity'
 
 echo "Start running Unity integration tests..."
 $unity -batchmode \
+    -verbose \
     -projectPath "$(pwd)/" \
     -runTests \
     -logFile "$(pwd)/output/playmode_log.xml" \
