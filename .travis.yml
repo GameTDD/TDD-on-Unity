@@ -15,4 +15,6 @@ jobs:
       script: ./Scripts/unit.sh
     - stage: integration
       script: ./Scripts/integration.sh
+    - stage: build
+      script: ./Scripts/build.sh
 
