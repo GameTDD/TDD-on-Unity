@@ -61,7 +61,7 @@ jobs:
           name: Test results for ${{ matrix.testMode }}
           path: ${{ steps.tests.outputs.artifactsPath }}
   build:
-    name: Build - ${{ matrix.targetPlatform }}
+    name: Build-${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -99,6 +99,11 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+          
 
   deployPages:
     needs: build
@@ -118,3 +123,4 @@ jobs:
         with:
           branch: gh-pages
           folder: build/WebGL      
+
