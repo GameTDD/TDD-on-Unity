@@ -56,7 +56,6 @@ jobs:
           checkName: ${{ matrix.testMode }} Test Results
       - name: Upload artifact for test in ${{ matrix.testMode }}
         uses: actions/upload-artifact@v2
-        if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
           path: ${{ steps.tests.outputs.artifactsPath }}
